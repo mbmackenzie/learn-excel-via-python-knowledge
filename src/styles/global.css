@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+h1 {
+    @apply text-3xl font-bold mb-4;
+}
+
+h2 {
+    @apply text-2xl font-semibold mb-3;
+}
+
+h3 {
+    @apply text-xl font-semibold mb-2;
+}
+
+ul>li {
+    @apply list-disc list-inside mb-1;
+}
+
+ol>li {
+    @apply list-decimal list-inside mb-1;
+}
+
+table {
+    @apply w-full text-left table-auto min-w-max;
+}
+
+th {
+    @apply p-4 border-b border-gray-100 bg-gray-50 font-sans text-sm antialiased font-normal leading-none text-gray-900 opacity-70;
+}
+
+td {
+    @apply p-4 border-b border-gray-50 font-sans text-sm antialiased font-normal leading-normal text-gray-900 wrap-anywhere;
+}
+
+td>code,
+th>code {
+    @apply bg-gray-100 rounded px-1 py-0.5 font-mono text-sm;
+}

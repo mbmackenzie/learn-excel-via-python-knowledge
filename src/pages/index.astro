@@ -1,11 +1,138 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import PairView from "../components/PairView.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const chapters = await getCollection("chapters");
+console.log("Chapters:", chapters);
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<SiteLayout>
+    <div class="space-y-8">
+        <h1>Python to Excel Knowledge Transfer</h1>
+
+        <div class="space-y-4">
+            <p>
+                This site helps Python programmers learn Excel by showing
+                side-by-side examples. It is organized into chapters consisting
+                of lessons. Each lesson is a pair that covers the same topic in
+                both Python and Excel.
+            </p>
+
+            <div class="space-y-2 p-4 border-l-4 border-zinc-200 bg-zinc-50">
+                <p>
+                    For example, in in the first few lessions we'll cover common
+                    functions, logical operations, and control flow. You might
+                    see:
+                </p>
+
+                <PairView pair="concat-basics" left="python" />
+            </div>
+        </div>
+
+        <section class="space-y-3">
+            <h2>Conventions</h2>
+            <p>
+                In each Excel pair we present a small table to make formulas
+                explicit. Read the columns as:
+            </p>
+            <ul class="list-disc pl-6 space-y-1">
+                <li>
+                    <strong>Cell</strong>: the address you should click or type
+                    in (e.g., <code>A1</code>, <code>B2</code>).
+                </li>
+                <li>
+                    <strong>Value / Formula</strong>: literals appear as numbers
+                    or text; formulas start with
+                    <code>=</code>. When you see <code>&rarr;</code>, the value
+                    to the right is the expected result after pressing <kbd
+                        >Enter</kbd
+                    >.
+                </li>
+                <li>
+                    Logical results display as <code>TRUE</code> / <code
+                        >FALSE</code
+                    > to match Excel’s capitalization.
+                </li>
+            </ul>
+            <p>
+                The Python snippets run against simple variables so you can copy
+                them into a REPL. For Excel, type the listed values into the
+                matching cells and then enter the formula to see the same
+                outcome.
+            </p>
+            <div class="rounded-md border border-zinc-200 p-3 bg-white">
+                <h3 class="text-base font-semibold">Example</h3>
+                <p class="mt-1 text-sm text-zinc-600">
+                    A basic addition exercise would appear as:
+                </p>
+                <table class="mt-2 w-full text-left text-sm">
+                    <thead>
+                        <tr>
+                            <th
+                                class="border-b border-zinc-200 pb-1 pr-4 font-medium text-zinc-500"
+                            >
+                                Cell
+                            </th>
+                            <th
+                                class="border-b border-zinc-200 pb-1 font-medium text-zinc-500"
+                            >
+                                Value / Formula
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td
+                                class="py-1 pr-4 font-mono text-sm text-zinc-800"
+                                >A1</td
+                            >
+                            <td class="py-1 font-mono text-sm text-zinc-800"
+                                >12</td
+                            >
+                        </tr>
+                        <tr>
+                            <td
+                                class="py-1 pr-4 font-mono text-sm text-zinc-800"
+                                >B1</td
+                            >
+                            <td class="py-1 font-mono text-sm text-zinc-800"
+                                >8</td
+                            >
+                        </tr>
+                        <tr>
+                            <td
+                                class="py-1 pr-4 font-mono text-sm text-zinc-800"
+                                >C1</td
+                            >
+                            <td class="py-1 font-mono text-sm text-zinc-800">
+                                =A1 + B1 → <span class="font-semibold">20</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div>
+            <h2>Table of Contents</h2>
+            <ol>
+                {
+                    chapters
+                        .toSorted((a, b) => a.data.order - b.data.order)
+                        .map((chapter) => (
+                            <li>
+                                <a
+                                    href={`/chapters/${chapter.id}/`}
+                                    class="text-blue-600 hover:underline"
+                                >
+                                    {chapter.data.title}
+                                </a>
+                            </li>
+                        ))
+                }
+            </ol>
+        </div>
+    </div>
+</SiteLayout>

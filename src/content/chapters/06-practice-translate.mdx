@@ -1,0 +1,81 @@
+---
+slug: practice-basics
+order: 6
+title: Practice - Translate Expressions
+---
+
+import { Image } from 'astro:assets';
+
+import PairView from "../../components/PairView.astro";
+import Callout from "../../components/Callout.astro";
+
+import totalHoursImg from '../../assets/practice1/total_hours.png';
+import passingFlagImg from '../../assets/practice1/passed.png';
+import letterGradeImg from '../../assets/practice1/letter_grade.png';
+import classAverageImg from '../../assets/practice1/class_avg.png';
+
+It is time to put the building blocks to work. Answer the following questions based on the data below.
+
+| student | homework_hours | lab_hours | test_score |
+| --- | --- | --- | --- |
+| Avery | 5 | 3 | 92 |
+| Blair | 4 | 2 | 76 |
+| Casey | 6 | 4 | 68 |
+
+<div class="my-4">
+<a href="/practice1.csv" class="text-blue-500 hover:underline">Download CSV</a>
+</div>
+
+## Practice
+
+### 1. Total Study Hours
+
+Add `homework_hours` and `lab_hours` together for each student. Store the result in a `total_hours` column or variable.
+
+<PairView pair="practice-total-hours" />
+
+### 2. Passing Flag
+
+Create a column `passed_test` flag that is "Yes" for scores `>= 70` and "No" otherwise.
+
+<PairView pair="practice-pass-flag" />
+
+
+### 3. Letter Grade
+
+Translate `test_score` into a letter grade: `A (90+)`, `B (70+)`, otherwise `C`. Store the result in a `letter_grade` column or variable.
+
+<PairView pair="practice-letter-ifs" />
+
+### 4. (Bonus) Class Average
+
+
+Calculate the class average for `test_score`.
+
+<PairView pair="practice-class-average" />
+
+## Solutions
+
+<Image
+    src={totalHoursImg}
+    alt="Excel screenshot showing total_hours column filled with sum of homework_hours and lab_hours."
+    class="my-4 rounded-lg border border-zinc-200"
+/>
+
+<Image
+    src={passingFlagImg}
+    alt="Excel screenshot showing passed_test column with Yes/No based on test_score >= 70."
+    class="my-4 rounded-lg border border-zinc-200"
+/>
+
+<Image
+    src={letterGradeImg}
+    alt="Excel screenshot showing letter_grade column with A/B/C based on test_score."
+    class="my-4 rounded-lg border border-zinc-200"
+/>
+
+<Image
+    src={classAverageImg}
+    alt="Excel screenshot showing class_average variable with the average of test_scores."
+    class="my-4 rounded-lg border border-zinc-200"
+/>

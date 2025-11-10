@@ -1,0 +1,45 @@
+---
+slug: lesson-string-operations
+order: 7
+title: String Operations
+---
+
+import PairView from "../../components/PairView.astro";
+import Callout from "../../components/Callout.astro";
+
+Strings are the glue for names, IDs, and tidy notes. Python chains methods on variables; Excel references specific cells (think `A1`, `B1`) to reach the same result.
+
+Use these sample values while you practice:
+
+- `A1` → `"Jamie"`
+- `B1` → `"Rivera"`
+- `C1` → `"jamie.rivera@example.edu"`
+- `D1` → `"  Needs follow-up on Friday  "`
+
+<Callout>
+Enter the values exactly as listed so the cell references in the Excel formulas line up. If your sheet uses different locations, adjust the addresses accordingly.
+</Callout>
+
+## Build a Full Name
+
+<PairView pair="strings-full-name" />
+
+Concatenate first and last name with a space. In Python, the `+` operator joins the strings. Excel uses `&`, and the formula recalculates whenever you edit either cell.
+
+## Format Initials
+
+<PairView pair="strings-initials" />
+
+Grab the first letter, uppercase it, and append the last name. `LEFT` and `UPPER` in Excel mirror slicing and `.upper()` in Python.
+
+## Extract the Email Domain
+
+<PairView pair="strings-email-domain" />
+
+Substrings follow the same logic in both tools: find the `@` symbol, then keep everything to the right. Python’s `split` handles it in one call; Excel combines `FIND`, `LEN`, and `RIGHT`.
+
+## Trim Extra Spaces
+
+<PairView pair="strings-trim-note" />
+
+Clean up leading or trailing spaces before you compare or export text. Python’s `.strip()` and Excel’s `TRIM` deliver identical results.

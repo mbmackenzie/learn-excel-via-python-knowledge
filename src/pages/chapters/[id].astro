@@ -1,0 +1,76 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+type ChapterInSequence = {
+    id: string | undefined;
+    title: string | undefined;
+};
+
+const chapters = await getCollection("chapters");
+
+export async function getStaticPaths() {
+    const chapters = await getCollection("chapters");
+
+    return chapters.map((chapter) => {
+        return {
+            params: { id: chapter.id },
+            props: { chapter },
+        };
+    });
+}
+
+const { chapter } = Astro.props;
+const { Content } = await render(chapter);
+
+const order = chapter.data.order;
+const prevChapter = chapters.find((c) => c.data.order === order - 1);
+const nextChapter = chapters.find((c) => c.data.order === order + 1);
+---
+
+<SiteLayout title={`Chapter ${chapter.data.order}: ${chapter.data.title}`}>
+    <div class="space-y-6">
+        <div class="my-4">
+            <a href="/" class="text-blue-500 hover:underline">Go home</a>
+        </div>
+        <h1>{chapter.data.title}</h1>
+        {
+            chapter.data.time_estimate && (
+                <p class="text-gray-500">{chapter.data.time_estimate}</p>
+            )
+        }
+        <Content />
+        <div class="grid gap-4 md:grid-cols-2">
+            {
+                prevChapter ? (
+                    <div class="border border-gray-500 p-4 rounded">
+                        <h3>Previous Lesson</h3>
+                        <a
+                            href={`/chapters/${prevChapter.id}`}
+                            class="text-blue-500 hover:underline"
+                        >
+                            {prevChapter.data.title}
+                        </a>
+                    </div>
+                ) : (
+                    <div />
+                )
+            }
+            {
+                nextChapter ? (
+                    <div class="border border-gray-500 p-4 rounded">
+                        <h3>Next Lesson</h3>
+                        <a
+                            href={`/chapters/${nextChapter.id}`}
+                            class="text-blue-500 hover:underline"
+                        >
+                            {nextChapter.data.title}
+                        </a>
+                    </div>
+                ) : (
+                    <div />
+                )
+            }
+        </div>
+    </div>
+</SiteLayout>

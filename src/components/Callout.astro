@@ -1,0 +1,10 @@
+---
+const { title = "Note" } = Astro.props;
+---
+
+<div
+    class="not-prose my-4 rounded-xl border-l-4 border-blue-500 bg-blue-50 p-4"
+>
+    <div class="font-semibold text-blue-900">{title}</div>
+    <div class="text-blue-900/90"><slot /></div>
+</div>

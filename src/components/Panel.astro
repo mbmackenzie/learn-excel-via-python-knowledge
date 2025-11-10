@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+    content: string;
+    hidden?: boolean;
+}
+
+const { title, content, hidden = false } = Astro.props;
+---
+
+<div class="rounded-2xl border border-zinc-200 bg-white shadow-sm" x-data="{ shown: false }">
+    <div
+        class="sticky top-14 z-10 rounded-t-2xl border-b border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700 flex items-center justify-between"
+    >
+        <span>{title}</span>
+        {hidden && (
+            <button 
+                @click="shown = !shown"
+                class="px-3 py-1 text-xs rounded-md bg-white border border-zinc-300 hover:bg-zinc-50 transition-colors"
+                :class="shown ? 'text-zinc-700' : 'text-blue-600 font-medium'"
+            >
+                <span x-show="!shown">Show Solution</span>
+                <span x-show="shown" x-cloak>Hide Solution</span>
+            </button>
+        )}
+    </div>
+    <div class="prose prose-zinc prose-sm max-w-none p-4">
+        {hidden ? (
+            <div x-show="shown" x-cloak x-transition>
+                <div set:html={content} />
+            </div>
+            <div x-show="!shown" class="text-zinc-500 italic text-sm py-4">
+                Click "Show Solution" to reveal the {title} implementation
+            </div>
+        ) : (
+            <div set:html={content} />
+        )}
+    </div>
+</div>

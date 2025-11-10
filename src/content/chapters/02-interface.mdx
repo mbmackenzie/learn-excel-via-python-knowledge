@@ -1,0 +1,63 @@
+---
+slug: lunch-02-interface
+order: 2
+title: Interface & Terminology
+---
+
+import { Image } from 'astro:assets';
+
+import column from '../../assets/lesson2/column.png';
+import row from '../../assets/lesson2/row.png';
+import cell from '../../assets/lesson2/cell.png';
+
+
+This lesson highlights the pieces of the Excel interface you will reach for constantly. Consider it a map before we start translating Python ideas into spreadsheets.
+
+## The Ribbon
+
+The ribbon is the toolbar at the top of the window. Each tab (Home, Insert, Data, Formulas, etc.) groups related commands.
+
+For analysis work, you will live in:
+
+- **Formulas**: function library, named ranges, and formula auditing.
+- **Data**: sorting, filtering, validation, and data import.
+- **Home**: quick formatting, number styles, and alignment.
+
+## The Grid
+
+The grid is the heart of Excel. It is a matrix of rows (numbered) and columns (lettered). Every cell has an address like `A1` or `C5`.
+
+### Columns
+
+<div class="flex justify-between gap-4 p-4 border border-zinc-200 rounded-lg">
+
+Columns run top to bottom and are labeled A, B, C, …, Z, AA, AB, and so on.
+
+<Image src={column} alt="Excel column highlighted" class="w-[500px]" />
+
+</div>
+
+### Rows
+
+<div class="flex justify-between gap-4 p-4 border border-zinc-200 rounded-lg">
+
+Rows run left to right and are numbered 1, 2, 3, etc.
+
+<Image src={row} alt="Excel row highlighted" class="w-[500px]" />
+
+</div>
+
+### Cells
+
+<div class="flex justify-between gap-4 p-4 border border-zinc-200 rounded-lg">
+
+Cells sit at the intersection of a column and row. They hold values or formulas and are referenced by their address, such as `B2` or `D10`.
+
+<Image src={cell} alt="Excel cell highlighted" class="w-[500px]" />
+
+</div>
+
+
+## Formulas
+
+Formulas drive Excel’s calculations. Each one starts with `=` and references other cells by address. For example, to add `A1` and `B1`, type `=A1 + B1` in another cell and press Enter.

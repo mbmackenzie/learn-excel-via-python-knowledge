@@ -1,0 +1,33 @@
+---
+import SideBySide from "./SideBySide.astro";
+import { getEntry, render } from "astro:content";
+
+interface Props {
+    pair: string;
+    left?: "python" | "excel";
+    showSummary?: boolean;
+}
+
+const { pair, left = "python", showSummary = true } = Astro.props as Props;
+
+const py = await getEntry("python", pair);
+const xl = await getEntry("excel", pair);
+
+if (!py || !xl) {
+    throw new Error(
+        `Missing paired docs for pair="${pair}". Found python=${!!py}, excel=${!!xl}.`,
+    );
+}
+
+const leftContent = left === "python" ? py.rendered?.html : xl.rendered?.html;
+const rightContent = left === "python" ? xl.rendered?.html : py.rendered?.html;
+---
+
+<SideBySide
+    leftTitle={left === "python" ? "Python" : "Excel"}
+    rightTitle={left === "python" ? "Excel" : "Python"}
+    leftContent={leftContent}
+    rightContent={rightContent}
+    leftHidden={left === "python" ? py.data.hidden : xl.data.hidden}
+    rightHidden={left === "python" ? xl.data.hidden : py.data.hidden}
+/>

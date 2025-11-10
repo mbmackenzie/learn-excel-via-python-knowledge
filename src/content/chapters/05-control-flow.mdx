@@ -1,0 +1,34 @@
+---
+slug: lesson-control-flow
+order: 5
+title: Control Flow & Automation
+---
+
+import PairView from "../../components/PairView.astro";
+import Callout from "../../components/Callout.astro";
+
+Control flow decides what happens next: do we take one branch or another, and how do we repeat a calculation? Python uses `if` statements and loops; Excel relies on formulas that reference cells and auto-fill down the sheet.
+
+<Callout>
+Excel recalculates as soon as you edit a cell. After you drag a formula down once, every row stays in sync with its Python equivalent loop.
+</Callout>
+
+## Single Decision
+
+<PairView pair="control-if" />
+
+`IF` in Excel mirrors `if/else` in Python. Both check a condition (`score >= 60`) and choose between two messages.
+
+## Multiple Branches
+
+<PairView pair="control-ifs" />
+
+When you have more than two outcomes, Python chains `elif` blocks; Excel stacks tests inside `IFS`. Make sure the most specific rule comes first.
+
+## Repeat the Same Formula
+
+<PairView pair="control-loop" />
+
+A Python `for` loop applies the same logic to each item. In Excel, enter the formula once and drag the fill handle so each row calculates with its matching reference (`A2`, `A3`, ...).
+
+Together, these patterns cover most branching and repetition you will need. Choose the form that keeps your logic readable, then trust Excel or Python to carry it through the rest of the rows.

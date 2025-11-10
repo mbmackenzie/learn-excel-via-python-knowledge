@@ -1,0 +1,40 @@
+---
+slug: lesson-simple-formulas
+order: 3
+title: Arithmetic Operators
+---
+
+import PairView from "../../components/PairView.astro";
+import Callout from "../../components/Callout.astro";
+
+This lesson maps the arithmetic you already know in Python to the way Excel formulas reference cells. Keep a tiny mental model in mind: Python works with variables, while Excel works with addresses like `A1` and `B1`.
+
+<Callout>
+Excel recalculates every time the cell values change, so keep formulas short and literal. Python only runs when you execute the script, so we store results in variables.
+</Callout>
+
+## Addition
+
+<PairView pair="numbers-add" />
+
+Use `+` in both tools. Excel references specific cells, whereas Python works with named variables.
+
+## Multiplication
+
+<PairView pair="numbers-multiply" />
+
+The `*` operator behaves the same way. In Excel, the formula updates when any input cell changes.
+
+## Exponents
+
+<PairView pair="numbers-power" />
+
+Python uses `**` for powers; Excel supports both `^` and the `POWER` function.
+
+## Modulo (Remainder)
+
+<PairView pair="numbers-modulo" />
+
+`%` in Python and `MOD` in Excel both give you the remainder after division—a handy trick for time math or alternating row patterns.
+
+With these operators in hand, everyday numeric workflows—budgets, grades, time tracking—translate cleanly between your script and your spreadsheet.

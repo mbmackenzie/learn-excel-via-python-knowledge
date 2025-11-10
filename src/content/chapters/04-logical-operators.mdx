@@ -1,0 +1,28 @@
+---
+slug: lesson-logical-operators
+order: 4
+title: Logical Operators & Filtering
+---
+
+import PairView from "../../components/PairView.astro";
+import Callout from "../../components/Callout.astro";
+
+Logical expressions let you ask yes/no questions about your data. Python compares variables; Excel compares cells. The result is always `True`/`False` (Python) or `TRUE`/`FALSE` (Excel).
+
+<Callout>
+Give each comparison a meaningful label when you store it—filters, charts, and conditional formatting can all reuse that logical column.
+</Callout>
+
+## Compare Two Values
+
+<PairView pair="logic-comparisons" />
+
+The symbols (`==`, `<`, `<>`) behave the same way. The Python snippet prints the answers; the Excel formulas display them right in the grid.
+
+## Combine Conditions
+
+<PairView pair="logic-boolean" />
+
+`and` → `AND`, `or` → `OR`, and `not` → `NOT`. Parentheses matter in both tools; use them when you chain several tests together.
+
+Once you trust these building blocks, you can filter tables, highlight exceptions, and feed the results into more complex formulas with confidence.

@@ -1,3 +1,9 @@
+*.py
+AGENTS.md
+.github/copilot-instructions.md
+pyproject.toml
+uv.lock
+
 # build output
 dist/
 
