@@ -31,7 +31,10 @@ const nextChapter = chapters.find((c) => c.data.order === order + 1);
 <SiteLayout title={`Chapter ${chapter.data.order}: ${chapter.data.title}`}>
     <div class="space-y-6">
         <div class="my-4">
-            <a href="/" class="text-blue-500 hover:underline">Go home</a>
+            <a
+                href="/learn-excel-via-python-knowledge"
+                class="text-blue-500 hover:underline">Go home</a
+            >
         </div>
         <h1>{chapter.data.title}</h1>
         {
@@ -46,7 +49,7 @@ const nextChapter = chapters.find((c) => c.data.order === order + 1);
                     <div class="border border-gray-500 p-4 rounded">
                         <h3>Previous Lesson</h3>
                         <a
-                            href={`/chapters/${prevChapter.id}`}
+                            href={`/learn-excel-via-python-knowledge/chapters/${prevChapter.id}`}
                             class="text-blue-500 hover:underline"
                         >
                             {prevChapter.data.title}
@@ -61,7 +64,7 @@ const nextChapter = chapters.find((c) => c.data.order === order + 1);
                     <div class="border border-gray-500 p-4 rounded">
                         <h3>Next Lesson</h3>
                         <a
-                            href={`/chapters/${nextChapter.id}`}
+                            href={`/learn-excel-via-python-knowledge/chapters/${nextChapter.id}`}
                             class="text-blue-500 hover:underline"
                         >
                             {nextChapter.data.title}
