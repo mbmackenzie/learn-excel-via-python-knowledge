@@ -13,6 +13,7 @@ import pagefind from "astro-pagefind";
 export default defineConfig({
 
   site: "https://mbmackenzie.github.io",
+  base: '/learn-excel-via-python-knowledge',
 
   integrations: [mdx(), alpinejs(), pagefind()],
 
